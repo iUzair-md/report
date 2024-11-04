@@ -5,7 +5,7 @@
     align-items: center;
     max-width: 800px;
     margin: auto;
-    border: 1px solid black;
+    /* border: 1px solid black; */
     padding: 20px;
     box-sizing: border-box;
 }
@@ -30,7 +30,7 @@
     content: "";
     position: absolute;
     top: 0;
-    left: -15px; /* Move it outside of .form-container's main area */
+    left: -8px; /* Move it outside of .form-container's main area */
     bottom: 0;
     width: 16px;
     background: repeating-linear-gradient(
@@ -46,7 +46,7 @@
     content: "";
     position: absolute;
     top: 0;
-    right: -15px; /* Position it outside of .form-container's main area */
+    right: -8px; /* Position it outside of .form-container's main area */
     bottom: 0;
     width: 16px;
     background: repeating-linear-gradient(
@@ -83,7 +83,10 @@
     min-height: 40px;
     box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
-
+.grid-item > *:first-child {
+    margin-bottom: 7px;
+  }
+  
 
 
 /* Ensure each <p> starts from a new line and has no extra margins */
@@ -183,7 +186,7 @@
     border: 1px solid black; 
     border-left: 1px solid black;
     border-bottom: 1px solid black;
-    padding: 2px;
+    padding: 2px ;
 }
 
 .split-box.split-box-lower p {
@@ -307,6 +310,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 2px;
 }
 .top-box *{
     margin: 0;
@@ -344,6 +348,7 @@
     flex-direction: column;
     justify-content: center;
     gap: 15px;
+    padding: 0px 2px 0px 2px;
    
 }
 .bottom-box *{

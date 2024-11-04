@@ -46,25 +46,51 @@
 .grid-container {
     display: grid;
     border: 1px solid black;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr; /* Each column has an equal, fixed width */
     gap: 0;
     width: 100%;
     max-width: 800px;
     margin: auto;
-    
 }
 
 .grid-item {
     background-color: #ffffff;
-    padding: 20px;
+    padding: 2px; /* Add some padding for readability */
     border: 1px solid black;
-    text-align: center;
+    text-align: left;
+    position: relative;
     margin: 0;
-    
+    display: flex;
+    gap: 2px;
+    font-size: 13px;
+    flex-direction: column; /* Stack child elements vertically */
+    justify-content: flex-start; /* Align content at the top */
+    min-height: 40px;
+    box-sizing: border-box; /* Ensures padding and border are included in the width */
 }
 
-.item-1{
-    min-height: 30px;
+
+
+/* Ensure each <p> starts from a new line and has no extra margins */
+.grid-item * {
+    margin: 0; 
+}
+.item-1 {
+    min-height: 90px;
+}
+
+
+/* Add the data-number at the top right */
+.grid-item[data-number]::after {
+    content: attr(data-number);
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    font-weight: bold;
+    padding: 2px 5px; 
+    border-left: 1px solid black;
+    border-bottom: 1px solid black; 
+    background-color: #ffffff; 
 }
 
 /* First four items stay the same size */
@@ -98,12 +124,20 @@
     grid-row: 6 / span 2;
 }
 
+/* Ensure the grid layout respects row heights dynamically */
+.grid-container {
+    align-items: stretch; /* Forces each row to maintain equal height */
+}
+
+
+
+
 /* Grid 2 */
 .special-split-grid {
     display: grid;
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 4fr 1fr;
     gap: 0;
-    min-height: 500px;
+    min-height: 600px;
     width: 100%;
     max-width: 800px;
     margin: auto;
@@ -114,7 +148,7 @@
 
 .split-left-column {
     display: grid;
-    grid-template-rows: 2fr 1fr;
+    grid-template-rows: 3fr auto;
     gap: 0;
     border-right: 1px solid black;
 }
@@ -122,18 +156,54 @@
 .split-box {
     background-color: #ffffff;
     border-left: 1px solid black;
-    border-bottom: 1px solid black;
-    text-align: center;
+    text-align: left; /* Align text to the left */
+    box-sizing: border-box;
 }
-split-box-lower{
+
+
+
+.split-box.split-box-lower{
+    font-size: 13px;
+    max-height: fit-content;
     border: 1px solid black; 
     border-left: 1px solid black;
     border-bottom: 1px solid black;
-
+    padding: 2px;
 }
+
+.split-box.split-box-lower p {
+    margin: 0; /* Remove margin */
+    padding: 0px; /* Remove padding */
+}
+
+.split-left-column,
 .split-right-narrow {
+    width: 100%; 
+}
+
+
+.split-right-narrow {
+    font-size: 13px;
     grid-row: span 1;
     border-right: 1px solid black;
+    position: relative;
+    padding: 2px;
+}
+
+.split-right-narrow * {
+    margin-top: 0; 
+    padding: 0; 
+}
+
+.split-right-narrow[data-number]::after{
+    content: attr(data-number);
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    padding: 2px 5px; 
+    border-left: 1px solid black;
+    border-bottom: 1px solid black; 
+    background-color: #ffffff; 
 }
 
 /* Table styles */
@@ -141,21 +211,43 @@ split-box-lower{
     width: 100%;
     border-collapse: collapse;
     height: 100%;
+    table-layout: fixed;
 }
 
 .data-table th {
+    font-size: 13px;
     background-color: #dadada;
-    text-align: center;
-    font-weight: bold;
+    text-align: left; 
+    font-weight: 100;
     border: 1px solid black;
-    height: 50px;
+    height: 20px; 
+    padding: 1px; 
+    margin: 0; 
+    vertical-align: top; /* Ensure content starts from the top */
+}
+
+.data-table th:nth-child(1) {
+    width: 24%;
+}
+
+.data-table th:nth-child(2) {
+    width: 59%;
+}
+
+.data-table th:nth-child(3) {
+    width: 17%;
 }
 
 .data-table td {
     background-color: #ffffff;
     padding: 10px;
-    text-align: center;
+    text-align: left;
     border: 1px solid black;
+    vertical-align: top;
+    font-size: 13px;
+}
+.data-table td * {
+    margin: 0; 
 }
 
 /* Remove outer borders to prevent double borders */
@@ -173,6 +265,10 @@ split-box-lower{
     border-right: none;
 }
 
+
+
+
+
 /* Grid 3 */
 .container {
     width: 100%;
@@ -182,16 +278,37 @@ split-box-lower{
     border-right: 1px solid black;
     padding: 0;
     display: grid;
+    font-size: 13px;
 }
 
 .top-box {
     background-color: #ffffff;
-    padding: 30px;
     margin: 0;
     border-left: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
-   
+    position: relative;
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.top-box *{
+    margin: 0;
+}
+
+.top-box[data-number]::after{
+    content: attr(data-number);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-weight: bold;
+    top: 0px;
+    right: 0px;
+    padding: 2px 5px; 
+    border-left: 1px solid black;
+    border-bottom: 1px solid black; 
+    background-color: #ffffff; 
 }
 
 .bottom-row {
@@ -204,24 +321,63 @@ split-box-lower{
 
 .bottom-box {
     background-color: #ffffff;
-    padding: 30px;
     flex: 1;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     border-right: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 15px;
+   
 }
+.bottom-box *{
+    margin: 0;
+}
+
 
 .stacked-boxes {
     display: flex;
     flex-direction: column;
     gap: 0;
-    flex: 1;
 }
+
 
 .stacked-box {
     border-left: 1px solid black;
     border-top: 1px solid black;
     border-bottom: 1px solid black;
     background-color: #ffffff;
-    padding: 30px;
+    position: relative;
+    padding: 2px; 
+    min-height: 40px;  
+    flex-direction: column;
+}
+
+.stacked-box > * {
+    margin: 0;
+    padding: 0;
+    text-align: left; 
+    line-height: 1;
+}
+.stacked-box > p:first-child {
+    margin-bottom: 15px;  /* Adjust this value to control spacing */
+}
+
+.stacked-box * {
+    margin: 0;
+}
+
+.stacked-box[data-number]::after{
+    content: attr(data-number);
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    font-weight: bold;
+    top: 0px;
+    right: 0px;
+    padding: 2px 5px; 
+    border-left: 1px solid black;
+    border-bottom: 1px solid black; 
+    background-color: #ffffff; 
 }

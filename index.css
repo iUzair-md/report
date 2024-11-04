@@ -9,21 +9,36 @@
     padding: 20px;
     box-sizing: border-box;
 }
+.requirements-container {
+    display: flex;
+    justify-content: space-between;
+    font-size: 13px;
+    align-items: flex-start;  /* This ensures both elements touch the top */
+}
+
+.requirements {
+    width: 60%;
+    margin: 0;  /* Remove default margin */
+}
+
+.page-label {
+    margin: 0;  /* Remove default margin */
+}
 
 /* Blue striped border on the left side */
 .form-container::before {
     content: "";
     position: absolute;
     top: 0;
-    left: -20px; /* Move it outside of .form-container's main area */
+    left: -15px; /* Move it outside of .form-container's main area */
     bottom: 0;
-    width: 20px;
+    width: 16px;
     background: repeating-linear-gradient(
-        135deg,
+        45deg,
         blue,
-        blue 10px,
+        blue 14px,
         white 10px,
-        white 20px
+        white 26px
     );
 }
 
@@ -31,15 +46,15 @@
     content: "";
     position: absolute;
     top: 0;
-    right: -20px; /* Position it outside of .form-container's main area */
+    right: -15px; /* Position it outside of .form-container's main area */
     bottom: 0;
-    width: 20px;
+    width: 16px;
     background: repeating-linear-gradient(
-        135deg,
+        45deg,
         blue,
-        blue 10px,
+        blue 14px,
         white 10px,
-        white 20px
+        white 26px
     );
 }
 /* Grid 1 */
